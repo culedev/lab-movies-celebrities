@@ -1,0 +1,13 @@
+<div>
+  <h2>{{eachCelebrity.name}}</h2>
+  <h4>occupation:</h4>
+  <p>{{eachCelebrity.occupation}}</p>
+  <h4>catchPhrase:</h4>
+  <p>{{eachCelebrity.catchPhrase}}</p>
+
+  <a href="/celebrities/{{eachCelebrity._id}}/edit"><button class="btn btn-warning">Edit Celebrity</button></a>
+
+  <form action="/celebrities/{{eachCelebrity._id}}/delete" method="POST">
+    <button class="btn btn-danger">Delete Celebrity</button>
+  </form>
+</div>

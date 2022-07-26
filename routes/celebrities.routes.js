@@ -29,3 +29,55 @@ router.get("/", async (req, res, next) => {
 })
 
 module.exports = router;
+
+// GET Celebrity Details
+
+router.get("/:celebId/details", async (req, res, next) => {
+  const {celebId} = req.params
+
+  try {
+    const eachCelebrity = await Celebrity.findById(celebId)
+    res.render("celebrities/celebrity-details.hbs", {eachCelebrity})
+  } catch (err) {
+    next(err)
+  }
+})
+
+// GET/POST CELEBRITY EDIT
+
+router.get("/:celebId/edit", async (req, res, next) => {
+  const {celebId} = req.params
+  try {
+    const eachCelebrity = await Celebrity.findById(celebId)
+    res.render("celebrities/edit-celebrity.hbs", {eachCelebrity})
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.post("/:celebId/edit", async (req, res, next) => {
+  const {celebId} = req.params
+  const {name, occupation, catchPhrase} = req.body
+
+  try {
+    await Celebrity.findByIdAndUpdate(celebId, {name, occupation, catchPhrase})
+    res.redirect(`/celebrities/${celebId}/details`)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// POST DELETE CELEBRITY "/celebrities/:celebId/delete"
+
+router.post("/:celebId/delete", async (req, res, next) => {
+  const {celebId} = req.params
+
+  try {
+    
+    await Celebrity.findByIdAndRemove(celebId)
+    res.redirect("/celebrities")
+
+  } catch (err) {
+    next(err)
+  }
+}) 
