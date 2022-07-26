@@ -2,16 +2,16 @@
 
 <form action="/celebrities/{{eachCelebrity._id}}/edit" method="POST">
 
-  <label for="name">name:</label>
-  <input type="text" name="name" value="{{eachCelebrity.name}}" />
+  <label for="name" class="form-label">name:</label>
+  <input type="text" name="name" value="{{eachCelebrity.name}}" class="form-control"/>
   <br />
-  <label for="occupation">occupation:</label>
-  <input type="text" name="occupation" value="{{eachCelebrity.occupation}}" />
+  <label for="occupation" class="form-label">occupation:</label>
+  <input type="text" name="occupation" value="{{eachCelebrity.occupation}}" class="form-control"/>
   <br />
-  <label for="catchPhrase">Catch Phrase:</label>
-  <input type="text" name="catchPhrase" value="{{eachCelebrity.catchPhrase}}" />
+  <label for="catchPhrase" class="form-label">Catch Phrase:</label>
+  <input type="text" name="catchPhrase" value="{{eachCelebrity.catchPhrase}}" class="form-control"/>
   <br />
  
-  <button>Update Celebrity</button>
+  <button class="btn btn-success">Update Celebrity</button>
 
 </form>
